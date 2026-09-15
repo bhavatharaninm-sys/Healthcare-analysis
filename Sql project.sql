@@ -1,28 +1,44 @@
-Create database year2017;
-use year2017;
-rename table `2017.q3` to 2017_q3;
-desc 2017_q1;
-create view Year_2017 as select * from 2017_q1 union select * from 2017_q2 union select * from 2017_q3 union select * from 2017_q4;
-select * from 2017_q4;
-select * from year_2017;
-desc year_2017;
-#Total Revenue
-select sum(grip_tot) + sum(grop_tot) as Total_Revenue from year_2017;
+CREATE DATABASE year2017;
+USE year2017;
 
-#Gross Inpatient Revenue
-select sum(grip_tot) from year_2017;
+RENAME TABLE `2017.q3` TO 2017_q3;
 
-#Gross Outpatient Revenue
-select sum(grop_tot) from year_2017;
+DESC 2017_q1;
 
-#Total available beds
-select sum(avl_beds) from year_2017;
+CREATE VIEW Year_2017 AS
+SELECT * FROM 2017_q1
+UNION ALL
+SELECT * FROM 2017_q2
+UNION ALL
+SELECT * FROM 2017_q3
+UNION ALL
+SELECT * FROM 2017_q4;
 
-#Total staff beds
-select sum(stf_beds) from year_2017;
+SELECT * FROM 2017_q4;
+SELECT * FROM Year_2017;
 
-#Total Licensed Beds
-select sum(lic_beds) from year_2017;
+DESC Year_2017;
 
+# Total Revenue
+SELECT SUM(grip_tot) + SUM(grop_tot) AS Total_Revenue
+FROM Year_2017;
 
+# Gross Inpatient Revenue
+SELECT SUM(grip_tot) AS Gross_Inpatient_Revenue
+FROM Year_2017;
 
+# Gross Outpatient Revenue
+SELECT SUM(grop_tot) AS Gross_Outpatient_Revenue
+FROM Year_2017;
+
+# Total Available Beds
+SELECT SUM(avl_beds) AS Total_Available_Beds
+FROM Year_2017;
+
+# Total Staff Beds
+SELECT SUM(stf_beds) AS Total_Staff_Beds
+FROM Year_2017;
+
+# Total Licensed Beds
+SELECT SUM(lic_beds) AS Total_Licensed_Beds
+FROM Year_2017;
